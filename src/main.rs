@@ -76,7 +76,7 @@ impl Db {
             inner: HashMap::new(),
         }
     }
-    
+
     /// Insère un vecteur d'embarquement dans la base de données associé à un UUID unique.
     /// 
     /// # Arguments
@@ -119,6 +119,8 @@ impl Db {
     }
 }
 
+
+
 /// Fonction principale qui simule l'insertion de vecteurs et la recherche de similarités.
 /// 
 /// Dans cette fonction, plusieurs vecteurs sont insérés dans la base de données,
@@ -130,16 +132,16 @@ impl Db {
 /// ```
 /// main();
 /// ```
-
 fn main() {
     let mut db = Db::new();
     let embedding_dimension = 768;
+    let phrase = "Ceci est un exemple de phrase";
 
-    // Insérer quelques vecteurs aléatoires dans la base de données
-    for _ in 0..10 {
+    // Insérer un vecteur d'embarquement pour chaque mot dans la base de données
+    for _mot in phrase.split_whitespace() {
         let uuid = Uuid::new_v4();
         let embedding = generer_embedding(embedding_dimension);
-        db.insert(uuid, embedding);
+        db.insert(uuid, embedding);  // On insère chaque mot avec son vecteur d'embarquement
     }
 
     // Générer un vecteur de requête
@@ -153,3 +155,4 @@ fn main() {
         println!("UUID: {}, Similarité: {:.4}", uuid, similarity);
     }
 }
+
