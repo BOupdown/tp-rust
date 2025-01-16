@@ -19,7 +19,8 @@ Ce projet en Rust permet de générer des vecteurs aléatoires et de rechercher 
 fn generer_embedding(dimension: usize) -> Vec<f32> {
     let mut rng = rand::thread_rng();
     (0..dimension).map(|_| rng.gen_range(0.0..1.0)).collect()
-}```
+}
+```
 
 
 ### Calcul de la similarité cosinus
