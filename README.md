@@ -22,9 +22,9 @@ fn generer_embedding(dimension: usize) -> Vec<f32> {
 }
 ```
 
-
 ### Calcul de la similarité cosinus
 
+```
 fn calcul_similarite(vec1: &[f32], vec2: &[f32]) -> f32 {
     let produit: f32 = vec1.iter().zip(vec2).map(|(a, b)| a * b).sum();
     let vec1: f32 = vec1.iter().map(|x| x * x).sum::<f32>().sqrt();
@@ -36,9 +36,11 @@ fn calcul_similarite(vec1: &[f32], vec2: &[f32]) -> f32 {
         produit / (vec1 * vec2)
     }
 }
+```
 
 ### Structure Db pour la base de données
 
+```
 struct Db {
     inner: HashMap<Uuid, Vec<f32>>,
 }
@@ -62,9 +64,11 @@ impl Db {
         similarities.into_iter().take(n).collect()
     }
 }
+```
 
 ### Fonction main
 
+```
 fn main() {
     let mut db = Db::new();
     let embedding_dimension = 768;
@@ -83,3 +87,4 @@ fn main() {
         println!("UUID: {}, Similarité: {:.4}", uuid, similarity);
     }
 }
+```
